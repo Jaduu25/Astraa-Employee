@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#102b50">
+  <title>ESG Astraa Holiday Tracker</title>
+  <style>
+    :root{--navy:#102b50;--blue:#2878d0;--blue2:#eaf3ff;--ink:#18283d;--muted:#64748b;--line:#e2e8f0;--bg:#f4f7fb;--white:#fff;--purple:#7654c8;--green:#168568;--red:#c44949;--shadow:0 18px 55px rgba(16,43,80,.09)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+    button,input,select,textarea{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #a7ceff;outline-offset:2px}
+    .shell{min-height:100vh;display:grid;grid-template-columns:250px 1fr}.sidebar{background:linear-gradient(165deg,#102b50,#173d68);color:white;padding:28px 18px;display:flex;flex-direction:column;gap:28px}.brand{display:flex;align-items:center;gap:11px;padding:0 8px}.brandmark{width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,#36a2ff,#9673ef);display:grid;place-items:center;font-weight:800;font-size:17px;box-shadow:0 8px 22px #071b3d66}.brand strong{display:block;font-size:14px;letter-spacing:.2px}.brand span{display:block;color:#b8cce3;font-size:11px;margin-top:2px}.nav-label{color:#8fa9c8;text-transform:uppercase;font-size:10px;font-weight:800;letter-spacing:1.5px;padding:0 12px;margin-bottom:-16px}.nav{display:grid;gap:7px}.nav button{border:0;background:transparent;color:#d4e2f3;text-align:left;padding:12px 13px;border-radius:11px;display:flex;align-items:center;gap:12px;font-weight:600}.nav button.active,.nav button:hover{background:#ffffff17;color:#fff}.nav .ico{width:20px;text-align:center;font-size:17px}.side-foot{margin-top:auto;border-top:1px solid #ffffff24;padding:18px 10px 0;color:#b7cce2;font-size:12px}.side-foot b{display:block;color:white;font-size:13px;margin-bottom:4px}
+    main{min-width:0}.topbar{height:78px;background:#ffffffdc;backdrop-filter:blur(12px);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 34px;position:sticky;top:0;z-index:5}.crumb{font-size:13px;color:var(--muted)}.crumb b{color:var(--ink)}.top-right{display:flex;align-items:center;gap:14px}.status-pill{font-size:12px;color:var(--green);background:#e5f7f0;border:1px solid #c9eee0;padding:7px 10px;border-radius:99px;font-weight:700}.avatar{width:38px;height:38px;border-radius:50%;background:#e4edfb;color:var(--navy);display:grid;place-items:center;font-weight:800}.content{max-width:1450px;margin:auto;padding:32px 34px 48px}.welcome{display:flex;justify-content:space-between;gap:20px;align-items:flex-start;margin-bottom:25px}.eyebrow{color:var(--blue);font-size:11px;letter-spacing:1.7px;text-transform:uppercase;font-weight:800}.welcome h1{font-size:clamp(25px,3vw,34px);letter-spacing:-1.1px;margin:5px 0 7px;color:var(--navy)}.welcome p{margin:0;color:var(--muted)}.btn{border:1px solid var(--line);background:white;color:var(--ink);padding:10px 14px;border-radius:10px;font-weight:700;display:inline-flex;gap:8px;align-items:center;justify-content:center}.btn.primary{background:var(--blue);color:white;border-color:var(--blue);box-shadow:0 5px 12px #2878d026}.btn:hover{filter:brightness(.98);transform:translateY(-1px)}.btn:disabled{opacity:.5;cursor:not-allowed;transform:none}.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-bottom:22px}.stat,.panel{background:var(--white);border:1px solid #e8edf4;border-radius:17px;box-shadow:0 5px 22px #16365b06}.stat{padding:20px;min-height:136px}.stat-top{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:13px;font-weight:600}.stat-icon{width:36px;height:36px;border-radius:11px;display:grid;place-items:center;background:var(--blue2);color:var(--blue);font-size:17px}.stat-number{font-size:31px;letter-spacing:-1px;font-weight:800;color:var(--navy);margin:10px 0 1px}.stat-note{font-size:12px;color:var(--muted)}.grid-main{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(290px,.85fr);gap:20px}.panel{padding:22px;margin-bottom:20px;min-width:0}.panel-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:17px}.panel h2{font-size:16px;margin:0;color:var(--navy)}.panel-sub{font-size:12px;color:var(--muted);margin-top:4px}.text-link{background:none;border:0;color:var(--blue);font-weight:700;font-size:12px}.holiday-list{display:grid;gap:10px}.holiday{display:grid;grid-template-columns:56px minmax(0,1fr) auto;align-items:center;gap:13px;padding:12px;border:1px solid #edf1f6;border-radius:12px}.date-box{background:#f0f5fd;border-radius:10px;text-align:center;padding:7px 4px;color:var(--navy)}.date-box b{display:block;font-size:20px;line-height:1.2}.date-box span{font-size:10px;font-weight:800;text-transform:uppercase;color:var(--blue);letter-spacing:.8px}.holiday h3{font-size:13px;margin:0 0 3px}.holiday p{font-size:12px;color:var(--muted);margin:0}.tag{font-size:10px;font-weight:800;border-radius:99px;padding:5px 8px;background:#f0eaff;color:var(--purple);white-space:nowrap}.tag.green{background:#e5f7f0;color:var(--green)}.tag.gray{background:#f1f5f9;color:#64748b}.empty{padding:26px 14px;text-align:center;color:var(--muted);font-size:13px;border:1px dashed #d9e2ef;border-radius:12px}.empty b{display:block;color:var(--ink);margin-bottom:4px}.quick-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}.quick{border:1px solid var(--line);background:#fff;border-radius:12px;padding:15px;text-align:left}.quick:hover{border-color:#9cc7fa;background:#f9fbff}.quick .q-icon{font-size:19px;margin-bottom:10px}.quick b{display:block;font-size:13px;color:var(--navy)}.quick span{display:block;font-size:11px;color:var(--muted);margin-top:3px}.notice{display:flex;gap:12px;background:#eef5ff;border:1px solid #dceaff;border-radius:12px;padding:14px;color:#375477;font-size:12px;margin-top:17px}.notice strong{display:block;color:var(--navy);margin-bottom:3px}.table-wrap{overflow:auto}table{width:100%;border-collapse:collapse;min-width:500px}th{text-align:left;text-transform:uppercase;letter-spacing:.8px;font-size:10px;color:#718096;padding:11px 10px;border-bottom:1px solid var(--line)}td{padding:14px 10px;border-bottom:1px solid #edf1f6;font-size:12px}tbody tr:last-child td{border-bottom:0}.muted{color:var(--muted)}.hidden{display:none!important}
+    .login-wrap{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;background:white}.login-art{background:linear-gradient(145deg,#102b50,#1c5484);color:white;padding:9%;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}.login-art:before,.login-art:after{content:"";position:absolute;border:1px solid #ffffff19;border-radius:50%;width:480px;height:480px;right:-180px;top:8%}.login-art:after{width:320px;height:320px;right:-100px;top:19%}.art-content{position:relative;z-index:1;max-width:480px;margin:auto 0}.art-content .eyebrow{color:#9ed0ff}.art-content h1{font-size:clamp(32px,4vw,52px);line-height:1.12;letter-spacing:-1.8px;margin:15px 0}.art-content p{color:#d1e0f0;max-width:420px}.art-points{display:grid;gap:13px;margin-top:32px;color:#e0ecf8;font-size:13px}.art-points span:before{content:"✓";color:#8bc8ff;margin-right:10px;font-weight:900}.art-footer{position:relative;z-index:1;color:#9bb5d0;font-size:11px}.login-side{padding:40px;display:grid;place-items:center}.login-card{width:min(100%,410px)}.login-card .brand{padding:0;margin-bottom:44px;color:var(--navy)}.login-card .brand span{color:var(--muted)}.login-card h2{font-size:28px;letter-spacing:-.7px;color:var(--navy);margin:0 0 8px}.login-card .intro{color:var(--muted);font-size:13px;margin:0 0 28px}.field{display:grid;gap:7px;margin-bottom:16px}.field label{font-size:12px;font-weight:800;color:#34465d}.field input,.field select,.field textarea{width:100%;border:1px solid #dce4ee;border-radius:10px;padding:12px 13px;background:#fff;color:var(--ink)}.field input::placeholder,.field textarea::placeholder{color:#9aa8b8}.field input:focus,.field select:focus,.field textarea:focus{border-color:#70a9ed;outline:3px solid #e2efff}.login-submit{width:100%;padding:13px;margin-top:5px}.form-msg{font-size:12px;margin-top:13px;padding:10px 12px;border-radius:9px;display:none}.form-msg.error{display:block;background:#fff0f0;color:#a52f36}.form-msg.info{display:block;background:#eef5ff;color:#2b5686}.login-help{font-size:11px;color:var(--muted);text-align:center;margin-top:20px;line-height:1.6}.mobile-menu{display:none}
+    .modal-backdrop{position:fixed;inset:0;background:#0b1d34a8;z-index:20;display:grid;place-items:center;padding:18px}.modal{width:min(100%,490px);background:white;border-radius:18px;padding:25px;box-shadow:var(--shadow);max-height:90vh;overflow:auto}.modal h2{font-size:20px;margin:0 0 6px;color:var(--navy)}.modal .desc{font-size:12px;color:var(--muted);margin:0 0 20px}.modal-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:18px}.toast{position:fixed;right:22px;bottom:22px;background:#102b50;color:white;padding:13px 17px;border-radius:12px;box-shadow:var(--shadow);z-index:40;font-size:13px;max-width:min(90vw,380px)}
+    @media(max-width:1050px){.shell{grid-template-columns:215px 1fr}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.grid-main{grid-template-columns:1fr}.content{padding:25px 22px}.topbar{padding:0 22px}}
+    @media(max-width:720px){.shell{display:block}.sidebar{display:none}.topbar{height:65px;padding:0 17px}.mobile-menu{display:inline-flex}.content{padding:23px 15px}.welcome{display:block}.welcome .btn{margin-top:17px}.stats{gap:10px}.stat{padding:15px;min-height:120px}.stat-number{font-size:27px}.stat-top{font-size:11px}.stat-icon{width:30px;height:30px}.panel{padding:16px}.login-wrap{grid-template-columns:1fr}.login-art{display:none}.login-side{padding:28px 22px;min-height:100vh}.login-card .brand{margin-bottom:35px}.holiday{grid-template-columns:48px minmax(0,1fr)}.holiday .tag{grid-column:2;justify-self:start}.quick-actions{grid-template-columns:1fr 1fr}.status-pill{display:none}}
+  </style>
+</head>
+<body>
+  <section id="loginView" class="login-wrap">
+    <div class="login-art">
+      <div class="brand"><div class="brandmark">EA</div><div><strong>ESG Astraa</strong><span>People & Culture</span></div></div>
+      <div class="art-content">
+        <div class="eyebrow">Employee self-service</div>
+        <h1>Time away,<br>made simple.</h1>
+        <p>Your central place to view company holidays, request leave and keep track of your time off.</p>
+        <div class="art-points"><span>Company holiday calendar</span><span>Leave requests and status</span><span>Personal attendance overview</span></div>
+      </div>
+      <div class="art-footer">ESG Astraa Holiday Tracker · Secure employee access</div>
+    </div>
+    <div class="login-side">
+      <div class="login-card">
+        <div class="brand"><div class="brandmark">EA</div><div><strong>ESG Astraa</strong><span>Holiday Tracker</span></div></div>
+        <h2>Welcome back</h2>
+        <p class="intro">Sign in with your company account to continue.</p>
+        <form id="loginForm">
+          <div class="field"><label for="email">Company email</label><input id="email" type="email" autocomplete="username" placeholder="you@company.com" required></div>
+          <div class="field"><label for="password">Password</label><input id="password" type="password" autocomplete="current-password" placeholder="Enter your password" required></div>
+          <button class="btn primary login-submit" id="loginBtn" type="submit">Sign in securely <span>→</span></button>
+          <div id="loginMessage" class="form-msg" role="status"></div>
+        </form>
+        <div class="login-help">Access is managed by your organisation.<br>If you need an account, contact your HR administrator.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="appView" class="shell hidden">
+    <aside class="sidebar">
+      <div class="brand"><div class="brandmark">EA</div><div><strong>ESG Astraa</strong><span>Holiday Tracker</span></div></div>
+      <div class="nav-label">Workspace</div>
+      <nav class="nav" aria-label="Main navigation">
+        <button class="active" data-page="overview"><span class="ico">▦</span> Overview</button>
+        <button data-page="holidays"><span class="ico">▣</span> Holiday calendar</button>
+        <button data-page="leave"><span class="ico">◷</span> My leave</button>
+        <button data-page="attendance"><span class="ico">◉</span> Attendance</button>
+      </nav>
+      <div class="side-foot"><b>ESG Astraa</b>People-first workplace tools<br><span id="connectionLabel">Checking secure connection…</span></div>
+    </aside>
+    <main>
+      <header class="topbar">
+        <div class="crumb"><button class="btn mobile-menu" id="mobileMenuBtn" type="button">☰</button> Workspace <span style="padding:0 7px;color:#a0aec0">/</span> <b id="pageCrumb">Overview</b></div>
+        <div class="top-right"><span class="status-pill" id="connectionPill">Secure session</span><div class="avatar" id="avatar">EA</div><button class="btn" id="signOutBtn" type="button">Sign out</button></div>
+      </header>
+      <div class="content">
+        <div class="welcome">
+          <div><div class="eyebrow" id="todayLabel">EMPLOYEE WORKSPACE</div><h1 id="welcomeTitle">Your time, at a glance.</h1><p id="welcomeSubtitle">A clear view of holidays, leave and attendance.</p></div>
+          <button class="btn primary" id="requestLeaveTop" type="button">＋ Request leave</button>
+        </div>
+        <div id="overviewPage">
+          <div class="stats">
+            <article class="stat"><div class="stat-top">Upcoming holidays <span class="stat-icon">▣</span></div><div class="stat-number" id="statHolidays">—</div><div class="stat-note">Remaining this calendar year</div></article>
+            <article class="stat"><div class="stat-top">Leave balance <span class="stat-icon">◷</span></div><div class="stat-number" id="statBalance">—</div><div class="stat-note">As recorded by HR</div></article>
+            <article class="stat"><div class="stat-top">Pending requests <span class="stat-icon">◌</span></div><div class="stat-number" id="statPending">—</div><div class="stat-note">Awaiting a decision</div></article>
+            <article class="stat"><div class="stat-top">Attendance this month <span class="stat-icon">✓</span></div><div class="stat-number" id="statAttendance">—</div><div class="stat-note">Recorded attendance days</div></article>
+          </div>
+          <div class="grid-main">
+            <div>
+              <section class="panel"><div class="panel-head"><div><h2>Upcoming holidays</h2><div class="panel-sub">Company-wide dates and observances</div></div><button class="text-link" data-goto="holidays">View calendar →</button></div><div id="upcomingList" class="holiday-list"><div class="empty"><b>Connect your company account</b>Holiday information will appear here when available.</div></div></section>
+              <section class="panel"><div class="panel-head"><div><h2>Recent leave requests</h2><div class="panel-sub">Track your submitted requests</div></div><button class="text-link" data-goto="leave">View all →</button></div><div id="recentLeave" class="empty"><b>No requests loaded</b>Your leave history will appear here after sign-in.</div></section>
+            </div>
+            <div>
+              <section class="panel"><div class="panel-head"><div><h2>Quick actions</h2><div class="panel-sub">Common employee tasks</div></div></div><div class="quick-actions"><button class="quick" id="quickLeave" type="button"><div class="q-icon">🗓️</div><b>Request leave</b><span>Submit time off</span></button><button class="quick" data-goto="holidays" type="button"><div class="q-icon">📅</div><b>View holidays</b><span>Plan ahead</span></button><button class="quick" data-goto="attendance" type="button"><div class="q-icon">⏱️</div><b>Attendance</b><span>Review your records</span></button><button class="quick" data-goto="leave" type="button"><div class="q-icon">📋</div><b>Leave history</b><span>Check request status</span></button></div>
+                <div class="notice"><span>ⓘ</span><div><strong>Your information stays account-specific</strong>Only records permitted for your signed-in company account should be displayed.</div></div>
+              </section>
+              <section class="panel"><div class="panel-head"><div><h2>Account</h2><div class="panel-sub">Signed-in employee</div></div></div><div style="display:flex;align-items:center;gap:12px"><div class="avatar" id="profileAvatar">EA</div><div><b id="profileName">Employee</b><div class="muted" id="profileEmail" style="font-size:12px">—</div><div class="muted" id="profileRole" style="font-size:11px;margin-top:3px">Employee account</div></div></div></section>
+            </div>
+          </div>
+        </div>
+        <section id="holidaysPage" class="panel hidden"><div class="panel-head"><div><h2>Holiday calendar</h2><div class="panel-sub">Upcoming company holidays</div></div></div><div id="allHolidays" class="holiday-list"></div></section>
+        <section id="leavePage" class="panel hidden"><div class="panel-head"><div><h2>My leave requests</h2><div class="panel-sub">Requests submitted under your account</div></div><button class="btn primary" id="requestLeavePage" type="button">＋ Request leave</button></div><div id="leaveTable" class="empty">No leave requests loaded.</div></section>
+        <section id="attendancePage" class="panel hidden"><div class="panel-head"><div><h2>My attendance</h2><div class="panel-sub">Attendance records available to your account</div></div></div><div id="attendanceTable" class="empty">No attendance records loaded.</div></section>
+      </div>
+    </main>
+  </section>
+
+  <div id="leaveModal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="leaveModalTitle">
+    <div class="modal"><h2 id="leaveModalTitle">Request leave</h2><p class="desc">Submit a request for your HR administrator to review.</p>
+      <form id="leaveForm">
+        <div class="field"><label for="leaveType">Leave type</label><select id="leaveType" required><option value="">Choose leave type</option><option>Casual Leave</option><option>Sick Leave</option><option>Earned Leave</option><option>Unpaid Leave</option><option>Other</option></select></div>
+        <div class="field"><label for="leaveStart">Start date</label><input id="leaveStart" type="date" required></div>
+        <div class="field"><label for="leaveEnd">End date</label><input id="leaveEnd" type="date" required></div>
+        <div class="field"><label for="leaveReason">Reason (optional)</label><textarea id="leaveReason" rows="3" placeholder="Add a short note for your approver"></textarea></div>
+        <div id="leaveMessage" class="form-msg" role="status"></div>
+        <div class="modal-actions"><button class="btn" id="cancelLeave" type="button">Cancel</button><button class="btn primary" id="submitLeave" type="submit">Submit request</button></div>
+      </form>
+    </div>
+  </div>
+  <div id="toast" class="toast hidden" role="status"></div>
+
+  <!-- Add your Supabase project URL and anon/publishable key below. Never put a service-role key in browser code. -->
+  <script>
+    const SUPABASE_URL = "YOUR_SUPABASE_PROJECT_URL";
+    const SUPABASE_ANON_KEY = "YOUR_SUPABASE_ANON_OR_PUBLISHABLE_KEY";
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    (() => {
+      "use strict";
+      const $ = id => document.getElementById(id);
+      const configured = /^https:\/\/.+/.test(SUPABASE_URL) && !SUPABASE_URL.includes("YOUR_") && !!SUPABASE_ANON_KEY && !SUPABASE_ANON_KEY.includes("YOUR_");
+      let supabase = null, currentUser = null, profile = null, holidays = [], leaveRequests = [], attendanceRows = [];
+      const today = new Date(); today.setHours(0,0,0,0);
+      const fmtDate = value => value ? new Date(value + (String(value).length === 10 ? "T00:00:00" : "")).toLocaleDateString("en-IN",{day:"numeric",month:"short",year:"numeric"}) : "—";
+      const escapeHTML = value => String(value ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+      const initials = name => String(name || "EA").trim().split(/\s+/).slice(0,2).map(s=>s[0]||"").join("").toUpperCase();
+      const showToast = msg => { $("toast").textContent=msg; $("toast").classList.remove("hidden"); setTimeout(()=>$("toast").classList.add("hidden"),3500); };
+      const setMessage = (id, text, type="info") => { const el=$(id); el.textContent=text; el.className="form-msg "+type; };
+      const clearMessage = id => { const el=$(id); el.textContent=""; el.className="form-msg"; };
+      const setBusy = (button, busy, label) => { button.disabled=busy; if(!button.dataset.original) button.dataset.original=button.innerHTML; button.innerHTML=busy?"Please wait…":(label||button.dataset.original); };
+      function setupConnection() {
+        if (configured && window.supabase) {
+          supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+          $("connectionLabel").textContent="Connected to Supabase";
+        } else {
+          $("connectionLabel").textContent="Backend setup required";
+          $("connectionPill").textContent="Setup required";
+        }
+      }
+      function renderHolidays(targetId, items) {
+        const target=$(targetId);
+        if(!items.length){target.innerHTML='<div class="empty"><b>No upcoming holidays available</b>Your HR team can add holidays to the company calendar.</div>';return;}
+        target.innerHTML=items.map(h=>{
+          const d=new Date((h.date||h.holiday_date)+"T00:00:00");
+          return `<article class="holiday"><div class="date-box"><b>${escapeHTML(d.getDate())}</b><span>${escapeHTML(d.toLocaleDateString("en-IN",{month:"short"}))}</span></div><div><h3>${escapeHTML(h.name||h.title||"Company holiday")}</h3><p>${escapeHTML(fmtDate(h.date||h.holiday_date))}${h.description?" · "+escapeHTML(h.description):""}</p></div><span class="tag">${escapeHTML(h.category||"Holiday")}</span></article>`;
+        }).join("");
+      }
+      function statusTag(status) {
+        const s=String(status||"Pending").toLowerCase();
+        const cls=s==="approved"?"green":s==="rejected"||s==="cancelled"?"gray":"";
+        return `<span class="tag ${cls}">${escapeHTML(s.charAt(0).toUpperCase()+s.slice(1))}</span>`;
+      }
+      function renderLeave() {
+        const rows=leaveRequests.slice().sort((a,b)=>String(b.created_at||"").localeCompare(String(a.created_at||"")));
+        if(!rows.length){$("recentLeave").innerHTML='<div class="empty"><b>No leave requests yet</b>Requests you submit will appear here.</div>';$("leaveTable").innerHTML='<div class="empty"><b>No leave requests yet</b>Use “Request leave” to submit your first request.</div>';return;}
+        $("recentLeave").innerHTML=`<div class="table-wrap"><table><thead><tr><th>Leave type</th><th>Dates</th><th>Status</th></tr></thead><tbody>${rows.slice(0,4).map(r=>`<tr><td>${escapeHTML(r.leave_type||r.type||"Leave")}</td><td>${escapeHTML(fmtDate(r.start_date))} – ${escapeHTML(fmtDate(r.end_date))}</td><td>${statusTag(r.status)}</td></tr>`).join("")}</tbody></table></div>`;
+        $("leaveTable").innerHTML=`<div class="table-wrap"><table><thead><tr><th>Leave type</th><th>Start</th><th>End</th><th>Reason</th><th>Status</th></tr></thead><tbody>${rows.map(r=>`<tr><td>${escapeHTML(r.leave_type||r.type||"Leave")}</td><td>${escapeHTML(fmtDate(r.start_date))}</td><td>${escapeHTML(fmtDate(r.end_date))}</td><td>${escapeHTML(r.reason||"—")}</td><td>${statusTag(r.status)}</td></tr>`).join("")}</tbody></table></div>`;
+      }
+      function renderAttendance() {
+        if(!attendanceRows.length){$("attendanceTable").innerHTML='<div class="empty"><b>No attendance records found</b>Your attendance will appear here when your organisation’s attendance system is connected.</div>';return;}
+        const rows=attendanceRows.slice().sort((a,b)=>String(b.attendance_date||b.date||"").localeCompare(String(a.attendance_date||a.date||"")));
+        $("attendanceTable").innerHTML=`<div class="table-wrap"><table><thead><tr><th>Date</th><th>Status</th><th>Check in</th><th>Check out</th></tr></thead><tbody>${rows.map(r=>`<tr><td>${escapeHTML(fmtDate(r.attendance_date||r.date))}</td><td>${statusTag(r.status||"Recorded")}</td><td>${escapeHTML(r.check_in||"—")}</td><td>${escapeHTML(r.check_out||"—")}</td></tr>`).join("")}</tbody></table></div>`;
+      }
+      function updateStats() {
+        const future=holidays.filter(h=>new Date((h.date||h.holiday_date)+"T00:00:00")>=today);
+        $("statHolidays").textContent=future.length;
+        const balance=profile?.leave_balance;
+        $("statBalance").textContent=Number.isFinite(Number(balance)) && balance!==null ? Number(balance) : "—";
+        $("statPending").textContent=leaveRequests.filter(r=>String(r.status||"pending").toLowerCase()==="pending").length;
+        const month=today.getMonth(), year=today.getFullYear();
+        $("statAttendance").textContent=attendanceRows.filter(r=>{const d=new Date((r.attendance_date||r.date||"")+"T00:00:00");return d.getMonth()===month&&d.getFullYear()===year;}).length;
+      }
+      async function fetchRows(table, query) {
+        const {data,error}=await query;
+        if(error){console.warn("Could not load "+table,error.message);return [];}
+        return data||[];
+      }
+      async function loadDashboard() {
+        if(!supabase||!currentUser) return;
+        // Expected schema: employees(id, auth_user_id, full_name, email, role, leave_balance),
+        // holidays(id, name, date, description, category),
+        // leave_requests(id, employee_id, leave_type, start_date, end_date, reason, status, created_at),
+        // attendance(id, employee_id, attendance_date, status, check_in, check_out).
+        const employeeRows=await fetchRows("employees",supabase.from("employees").select("id,auth_user_id,full_name,email,role,leave_balance").eq("auth_user_id",currentUser.id).limit(1));
+        profile=employeeRows[0]||{full_name:currentUser.user_metadata?.full_name||currentUser.email,email:currentUser.email,role:"employee"};
+        if(profile.id){
+          holidays=await fetchRows("holidays",supabase.from("holidays").select("id,name,date,description,category").gte("date",today.toISOString().slice(0,10)).order("date").limit(100));
+          leaveRequests=await fetchRows("leave_requests",supabase.from("leave_requests").select("id,leave_type,start_date,end_date,reason,status,created_at").eq("employee_id",profile.id).order("created_at",{ascending:false}).limit(100));
+          attendanceRows=await fetchRows("attendance",supabase.from("attendance").select("id,attendance_date,status,check_in,check_out").eq("employee_id",profile.id).order("attendance_date",{ascending:false}).limit(100));
+        } else {
+          holidays=await fetchRows("holidays",supabase.from("holidays").select("id,name,date,description,category").gte("date",today.toISOString().slice(0,10)).order("date").limit(100));
+          leaveRequests=[]; attendanceRows=[];
+          showToast("Your account is signed in, but HR has not linked an employee profile yet.");
+        }
+        renderHolidays("upcomingList",holidays.slice(0,5));renderHolidays("allHolidays",holidays);renderLeave();renderAttendance();updateStats();
+        const name=profile.full_name||profile.name||currentUser.email||"Employee";
+        $("welcomeTitle").textContent="Welcome, "+name.split(" ")[0]+".";
+        $("profileName").textContent=name;$("profileEmail").textContent=profile.email||currentUser.email||"";
+        $("profileRole").textContent=profile.role||"Employee account";$("avatar").textContent=initials(name);$("profileAvatar").textContent=initials(name);
+        $("connectionPill").textContent="Secure session";$("connectionLabel").textContent="Connected to Supabase";
+      }
+      function showApp() {$("loginView").classList.add("hidden");$("appView").classList.remove("hidden");}
+      function showLogin() {$("appView").classList.add("hidden");$("loginView").classList.remove("hidden");}
+      async function signIn(event) {
+        event.preventDefault();clearMessage("loginMessage");
+        if(!configured||!supabase){setMessage("loginMessage","The page is deployed, but authentication is not configured yet. Add your Supabase project URL and anon/publishable key in index.html, then create the required database tables and security policies.","info");return;}
+        const button=$("loginBtn");setBusy(button,true);
+        const {data,error}=await supabase.auth.signInWithPassword({email:$("email").value.trim(),password:$("password").value});
+        setBusy(button,false,"Sign in securely →");
+        if(error){setMessage("loginMessage",error.message||"Sign-in failed. Check your details or contact your administrator.","error");return;}
+        currentUser=data.user;showApp();
+        try{await loadDashboard();}catch(e){console.error(e);showToast("Signed in, but some dashboard data could not be loaded. Check database permissions.");}
+      }
+      async function signOut() {
+        if(supabase) {const {error}=await supabase.auth.signOut();if(error) console.warn(error.message);}
+        currentUser=null;profile=null;holidays=[];leaveRequests=[];attendanceRows=[];$("loginForm").reset();clearMessage("loginMessage");showLogin();
+      }
+      async function submitLeave(event) {
+        event.preventDefault();clearMessage("leaveMessage");
+        if(!supabase||!currentUser||!profile?.id){setMessage("leaveMessage","Your account must be connected to an employee profile before you can submit a leave request.","error");return;}
+        const start=$("leaveStart").value,end=$("leaveEnd").value;
+        if(end<start){setMessage("leaveMessage","End date cannot be earlier than start date.","error");return;}
+        const button=$("submitLeave");setBusy(button,true);
+        const payload={employee_id:profile.id,leave_type:$("leaveType").value,start_date:start,end_date:end,reason:$("leaveReason").value.trim()||null,status:"pending"};
+        const {error}=await supabase.from("leave_requests").insert(payload);
+        setBusy(button,false,"Submit request");
+        if(error){setMessage("leaveMessage","Request could not be saved. Please contact HR or check the database permissions.","error");console.error(error.message);return;}
+        $("leaveForm").reset();$("leaveModal").classList.add("hidden");showToast("Leave request submitted to HR.");await loadDashboard();
+      }
+      function navigate(page) {
+        const pages=["overview","holidays","leave","attendance"];
+        if(!pages.includes(page))page="overview";
+        pages.forEach(p=>$(p+"Page").classList.toggle("hidden",p!==page));
+        document.querySelectorAll(".nav [data-page]").forEach(b=>b.classList.toggle("active",b.dataset.page===page));
+        $("pageCrumb").textContent=page==="overview"?"Overview":page==="holidays"?"Holiday calendar":page==="leave"?"My leave":"Attendance";
+        $("welcomeTitle").textContent=page==="overview"?"Your time, at a glance.":page==="holidays"?"Holiday calendar":page==="leave"?"My leave requests":"My attendance";
+        $("welcomeSubtitle").textContent=page==="overview"?"A clear view of holidays, leave and attendance.":page==="holidays"?"Plan ahead with your company holiday schedule.":page==="leave"?"Review requests and submit time off.":"Review attendance records linked to your account.";
+      }
+      function openLeaveModal(){if(!currentUser){showToast("Please sign in first.");return;}clearMessage("leaveMessage");$("leaveModal").classList.remove("hidden");}
+      $("loginForm").addEventListener("submit",signIn);$("signOutBtn").addEventListener("click",signOut);$("leaveForm").addEventListener("submit",submitLeave);
+      $("requestLeaveTop").addEventListener("click",openLeaveModal);$("requestLeavePage").addEventListener("click",openLeaveModal);$("quickLeave").addEventListener("click",openLeaveModal);
+      $("cancelLeave").addEventListener("click",()=>$("leaveModal").classList.add("hidden"));
+      $("leaveModal").addEventListener("click",e=>{if(e.target===$("leaveModal"))$("leaveModal").classList.add("hidden");});
+      document.querySelectorAll("[data-page]").forEach(b=>b.addEventListener("click",()=>navigate(b.dataset.page)));
+      document.querySelectorAll("[data-goto]").forEach(b=>b.addEventListener("click",()=>navigate(b.dataset.goto)));
+      $("mobileMenuBtn").addEventListener("click",()=>{const p=prompt("Open page: overview, holidays, leave, attendance");if(p)navigate(p.trim().toLowerCase());});
+      $("todayLabel").textContent=today.toLocaleDateString("en-IN",{weekday:"long",day:"numeric",month:"long",year:"numeric"}).toUpperCase();
+      setupConnection();
+      if(supabase){
+        supabase.auth.getSession().then(async ({data})=>{if(data.session){currentUser=data.session.user;showApp();try{await loadDashboard();}catch(e){console.error(e);}}});
+        supabase.auth.onAuthStateChange((_event,session)=>{if(!session&&currentUser){currentUser=null;showLogin();}});
+      }
+    })();
+  </script>
+</body>
+</html>
